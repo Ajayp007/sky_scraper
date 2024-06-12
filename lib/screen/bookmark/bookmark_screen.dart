@@ -13,7 +13,6 @@ class BookmarkScreen extends StatefulWidget {
 class _BookmarkScreenState extends State<BookmarkScreen> {
   HomeProvider? providerWH;
   HomeProvider? providerRH;
-  TextEditingController txtSearch = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,26 +20,53 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
     providerRH = context.read<HomeProvider>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Choose City"),
+        title: const Text("Bookmark"),
         centerTitle: true,
+        backgroundColor: const Color(0xff47BFDF),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            SearchBar(
-              controller: txtSearch,
-              leading: IconButton(
-                onPressed: () {
-                  providerWH!.search(txtSearch.text);
-                  providerRH!.bookmark!.add(txtSearch.text);
-                  Navigator.pop(context);
-                },
-                icon: const Icon(Icons.search_outlined),
+      body: Container(
+        height: MediaQuery.sizeOf(context).height,
+        width: MediaQuery.sizeOf(context).width,
+        padding:
+            const EdgeInsets.only(top: 24, bottom: 12, left: 12, right: 12),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xff47BFDF),
+              Color(0xff4A91FF),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: ListView.builder(
+          itemCount: providerWH!.bookmark!.length,
+          itemBuilder: (context, index) {
+            return Container(
+              height: 80,
+              padding: const EdgeInsets.only(left: 20,right: 20),
+              margin: const EdgeInsets.all(15),
+              width: MediaQuery.sizeOf(context).width * 0.96,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.blue.shade200.withOpacity(0.2),
+                border: Border.all(width: 1, color: Colors.white),
               ),
-              hintText: "Search...",
-            ),
-          ],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("${providerRH!.bookmark![index]}",style: TextStyle(fontSize: 18),),
+                  const Text("⛈️",style: TextStyle(fontSize: 20),),
+                  IconButton(
+                    onPressed: () {
+                      providerWH!.deleteBookmark(index);
+                    },
+                    icon: const Icon(Icons.delete_outline_outlined),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );

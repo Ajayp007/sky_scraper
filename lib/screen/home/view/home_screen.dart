@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   ThemeProvider? providerR;
   ThemeProvider? providerW;
-
+  TextEditingController txtSearch = TextEditingController();
   HomeProvider? providerWH;
   HomeProvider? providerRH;
 
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: MediaQuery.sizeOf(context).height,
                   width: MediaQuery.sizeOf(context).width,
                   padding: const EdgeInsets.only(
-                      top: 32, bottom: 12, left: 12, right: 12),
+                      top: 8, bottom: 12, left: 12, right: 12),
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
@@ -60,11 +60,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 20,
                       ),
+                      SearchBar(
+                        controller: txtSearch,
+                        leading: IconButton(
+                          onPressed: () {
+                            providerWH!.search(txtSearch.text);
+                          },
+                          icon: const Icon(Icons.search_outlined),
+                        ),
+                        hintText: "Search...",
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Row(
                         children: [
                           IconButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, 'bookmark');
                             },
                             icon: const Icon(Icons.location_on_outlined),
                           ),
@@ -75,7 +87,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const Spacer(),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              providerRH!.bookmark!.add(txtSearch.text);
+                            },
                             icon: const Icon(Icons.bookmark_outline),
                           ),
                         ],
@@ -109,13 +123,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(fontSize: 16),
                               ),
                               const SizedBox(height: 4),
-                              const Text(
-                                "30°",
-                                style: TextStyle(fontSize: 70),
+                              Text(
+                                "${providerRH!.model!.mainModel!.temp}°",
+                                style: const TextStyle(fontSize: 70),
                               ),
-                              const Text(
-                                "Cloudy",
-                                style: TextStyle(fontSize: 16),
+                              Text(
+                                "${providerRH!.model!.weather![0].description}",
+                                style: const TextStyle(fontSize: 16),
                               ),
                               const SizedBox(height: 30),
                               Row(
@@ -151,17 +165,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ],
                                   ),
                                   const SizedBox(width: 10),
-                                  const Column(
+                                  Column(
                                     children: [
                                       Row(
                                         children: [
-                                          Text("10 km/h"),
+                                          Text(
+                                              "${providerRH!.model!.windModel!.speed}"),
                                         ],
                                       ),
-                                      SizedBox(height: 20),
+                                      const SizedBox(height: 20),
                                       Row(
                                         children: [
-                                          Text("50 %"),
+                                          Text(
+                                              "${providerRH!.model!.mainModel!.humidity}%"),
                                         ],
                                       ),
                                     ],
@@ -173,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(
-                        height: 100,
+                        height: 50,
                       ),
                       InkWell(
                         onTap: () {

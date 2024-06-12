@@ -22,6 +22,13 @@ class HomeProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void deleteBookmark(int index)
+  {
+    bookmark!.removeAt(index);
+    notifyListeners();
+  }
+
+
   Future<void> getBookmark() async {
     List<String>? bookmarkData = await getBookmarkData();
     if (bookmarkData != null) {

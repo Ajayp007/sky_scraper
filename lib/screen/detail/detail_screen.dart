@@ -419,13 +419,16 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
                 const SizedBox(height: 20),
                 Container(
-                  height: 300,
-                  padding: const EdgeInsets.all(12),
+                  height: 130,
+                  padding: const EdgeInsets.all(16),
                   width: MediaQuery.sizeOf(context).width * 0.9,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.grey.shade300),
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.blue.shade200.withOpacity(0.2),
+                    border: Border.all(width: 1, color: Colors.white),
+                  ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Column(
                         children: [
@@ -450,8 +453,22 @@ class _DetailScreenState extends State<DetailScreen> {
                           const SizedBox(
                             height: 20,
                           ),
-                          const Text("Feels like"),
-                          Text("${model.mainModel!.feels_like}"),
+                          const Text("Wind Speed"),
+                          Text("${model.windModel!.speed}"),
+                        ],
+                      ),
+                      const SizedBox(width: 20),
+                      Column(
+                        children: [
+                          const Text(
+                            "💧",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text("Humidity"),
+                          Text("${model.mainModel!.humidity}"),
                         ],
                       ),
                     ],
