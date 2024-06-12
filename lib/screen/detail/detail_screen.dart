@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 import 'package:sky_scraper/screen/home/model/home_model.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -108,15 +106,14 @@ class _DetailScreenState extends State<DetailScreen> {
                                 children: [
                                   Text("${model.mainModel!.temp}°"),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
-                                  Image.network(
-                                    "https://cdn-icons-png.freepik.com/512/1779/1779940.png",
-                                    fit: BoxFit.cover,
-                                    height: 40,
+                                  const Text(
+                                    "🌦️",
+                                    style: TextStyle(fontSize: 35),
                                   ),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
                                   const Text("9 am"),
                                 ],
@@ -140,15 +137,14 @@ class _DetailScreenState extends State<DetailScreen> {
                                 children: [
                                   Text("${model.mainModel!.temp}°"),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
-                                  Image.network(
-                                    "https://cdn-icons-png.freepik.com/512/1779/1779940.png",
-                                    fit: BoxFit.cover,
-                                    height: 40,
+                                  const Text(
+                                    "⛈️",
+                                    style: TextStyle(fontSize: 35),
                                   ),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
                                   const Text("10 am"),
                                 ],
@@ -172,15 +168,14 @@ class _DetailScreenState extends State<DetailScreen> {
                                 children: [
                                   Text("${model.mainModel!.temp}°"),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
-                                  Image.network(
-                                    "https://cdn-icons-png.freepik.com/512/1779/1779940.png",
-                                    fit: BoxFit.cover,
-                                    height: 40,
+                                  const Text(
+                                    "🌨️",
+                                    style: TextStyle(fontSize: 35),
                                   ),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
                                   const Text("11 am"),
                                 ],
@@ -204,15 +199,14 @@ class _DetailScreenState extends State<DetailScreen> {
                                 children: [
                                   Text("${model.mainModel!.temp}°"),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
-                                  Image.network(
-                                    "https://cdn-icons-png.freepik.com/512/1779/1779940.png",
-                                    fit: BoxFit.cover,
-                                    height: 40,
+                                  const Text(
+                                    "☀️",
+                                    style: TextStyle(fontSize: 33),
                                   ),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 18,
                                   ),
                                   const Text("12 pm"),
                                 ],
@@ -236,15 +230,14 @@ class _DetailScreenState extends State<DetailScreen> {
                                 children: [
                                   Text("${model.mainModel!.temp}°"),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
-                                  Image.network(
-                                    "https://cdn-icons-png.freepik.com/512/1779/1779940.png",
-                                    fit: BoxFit.cover,
-                                    height: 40,
+                                  const Text(
+                                    "☁️",
+                                    style: TextStyle(fontSize: 35),
                                   ),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
                                   const Text("01 pm"),
                                 ],
@@ -268,15 +261,14 @@ class _DetailScreenState extends State<DetailScreen> {
                                 children: [
                                   Text("${model.mainModel!.temp}°"),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
-                                  Image.network(
-                                    "https://cdn-icons-png.freepik.com/512/1779/1779940.png",
-                                    fit: BoxFit.cover,
-                                    height: 40,
+                                  const Text(
+                                    "☀️",
+                                    style: TextStyle(fontSize: 35),
                                   ),
                                   const SizedBox(
-                                    height: 20,
+                                    height: 15,
                                   ),
                                   const Text("02 pm"),
                                 ],
@@ -419,7 +411,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
                 const SizedBox(height: 20),
                 Container(
-                  height: 130,
+                  height: 270,
                   padding: const EdgeInsets.all(16),
                   width: MediaQuery.sizeOf(context).width * 0.9,
                   decoration: BoxDecoration(
@@ -427,48 +419,98 @@ class _DetailScreenState extends State<DetailScreen> {
                     color: Colors.blue.shade200.withOpacity(0.2),
                     border: Border.all(width: 1, color: Colors.white),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: Column(
                     children: [
-                      Column(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Text(
-                            "🌡️",
-                            style: TextStyle(fontSize: 20),
+                          Column(
+                            children: [
+                              const Text(
+                                "🌡️",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text("Feels like"),
+                              Text("${model.mainModel!.feels_like}"),
+                            ],
                           ),
-                          const SizedBox(
-                            height: 20,
+                          const SizedBox(width: 20),
+                          Column(
+                            children: [
+                              const Text(
+                                "🌪️",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text("Wind Speed"),
+                              Text("${model.windModel!.speed}"),
+                            ],
                           ),
-                          const Text("Feels like"),
-                          Text("${model.mainModel!.feels_like}"),
+                          const SizedBox(width: 20),
+                          Column(
+                            children: [
+                              const Text(
+                                "💧",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text("Humidity"),
+                              Text("${model.mainModel!.humidity}"),
+                            ],
+                          ),
                         ],
                       ),
-                      const SizedBox(width: 20),
-                      Column(
-                        children: [
-                          const Text(
-                            "🌪️",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          const Text("Wind Speed"),
-                          Text("${model.windModel!.speed}"),
-                        ],
+                      const SizedBox(
+                        height: 40,
                       ),
-                      const SizedBox(width: 20),
-                      Column(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Text(
-                            "💧",
-                            style: TextStyle(fontSize: 20),
+                          Column(
+                            children: [
+                              const Text(
+                                "♒️",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text("Pressure"),
+                              Text("${model.mainModel!.pressure}"),
+                            ],
                           ),
-                          const SizedBox(
-                            height: 20,
+                          const SizedBox(width: 20),
+                          Column(
+                            children: [
+                              const Icon(Icons.remove_red_eye_outlined),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text("Visibility"),
+                              Text("${model.visibility}"),
+                            ],
                           ),
-                          const Text("Humidity"),
-                          Text("${model.mainModel!.humidity}"),
+                          const SizedBox(width: 20),
+                          Column(
+                            children: [
+                              const Text(
+                                "⛅︎",
+                                style: TextStyle(fontSize: 22),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text("Cloud"),
+                              Text("${model.cloudsModel!.all}°"),
+                            ],
+                          ),
                         ],
                       ),
                     ],

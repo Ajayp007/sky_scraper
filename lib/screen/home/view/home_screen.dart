@@ -54,165 +54,179 @@ class _HomeScreenState extends State<HomeScreen> {
                       end: Alignment.bottomCenter,
                     ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SearchBar(
-                        controller: txtSearch,
-                        leading: IconButton(
-                          onPressed: () {
-                            providerWH!.search(txtSearch.text);
-                          },
-                          icon: const Icon(Icons.search_outlined),
-                        ),
-                        hintText: "Search...",
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                            },
-                            icon: const Icon(Icons.location_on_outlined),
-                          ),
-                          Text(
-                            "${providerWH!.model!.name}",
-                            style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          const Spacer(),
-                          IconButton(
-                            onPressed: () {
-                              providerRH!.bookmark!.add(txtSearch.text);
-                            },
-                            icon: const Icon(Icons.bookmark_outline),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Center(
-                        child: Image.asset(
-                          "assets/image/imag1.png",
-                          fit: BoxFit.cover,
-                          height: 300,
-                          width: 300,
-                        ),
-                      ),
-                      Center(
-                        child: Container(
-                          height: 300,
-                          width: MediaQuery.sizeOf(context).width * 0.8,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: Colors.blue.shade200,
-                            border: Border.all(width: 1, color: Colors.white),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(height: 12),
-                              const Text(
-                                "Today,13 June",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                "${providerRH!.model!.mainModel!.temp}°",
-                                style: const TextStyle(fontSize: 70),
-                              ),
-                              Text(
-                                "${providerRH!.model!.weather![0].description}",
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                              const SizedBox(height: 30),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Image.asset("assets/image/windy.png"),
-                                          const SizedBox(width: 24),
-                                          const Text("Wind"),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Image.asset("assets/image/hum.png"),
-                                          const SizedBox(width: 24),
-                                          const Text("Hum"),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(width: 10),
-                                  const Column(
-                                    children: [
-                                      Text("|"),
-                                      SizedBox(height: 20),
-                                      Text("|"),
-                                    ],
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                              "${providerRH!.model!.windModel!.speed}"),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 20),
-                                      Row(
-                                        children: [
-                                          Text(
-                                              "${providerRH!.model!.mainModel!.humidity}%"),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, 'detail',
-                              arguments: providerWH!.model);
-                        },
-                        child: Center(
-                          child: Container(
-                            height: 50,
-                            alignment: Alignment.center,
-                            width: MediaQuery.sizeOf(context).width * 0.46,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
+                  child: FutureBuilder(
+                    future: providerWH!.model,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return Center(child: Text("${snapshot.error}"));
+                      } else if (snapshot.hasData) {
+                        HomeModel? model = snapshot.data;
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 20,
                             ),
-                            child: const Text(
-                              "Forecast report >",
-                              style: TextStyle(color: Colors.black),
+                            SearchBar(
+                              controller: txtSearch,
+                              leading: IconButton(
+                                onPressed: () {
+                                  providerWH!.search(txtSearch.text);
+                                },
+                                icon: const Icon(Icons.search_outlined),
+                              ),
+                              hintText: "Search...",
                             ),
-                          ),
-                        ),
-                      ),
-                    ],
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.location_on_outlined),
+                                ),
+                                Text(
+                                  "${model!.name}",
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const Spacer(),
+                                IconButton(
+                                  onPressed: () {
+                                    providerRH!.bookmark!.add(txtSearch.text);
+                                  },
+                                  icon: const Icon(Icons.bookmark_outline),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            const Center(
+                              child: Text(
+                                "🌦️",
+                                style: TextStyle(fontSize: 200),
+                              ),
+                            ),
+                            Center(
+                              child: Container(
+                                height: 300,
+                                width: MediaQuery.sizeOf(context).width * 0.8,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: Colors.blue.shade200,
+                                  border:
+                                      Border.all(width: 1, color: Colors.white),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(height: 12),
+                                    const Text(
+                                      "Today,13 June",
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      "${model.mainModel!.temp}°",
+                                      style: const TextStyle(fontSize: 70),
+                                    ),
+                                    Text(
+                                      "${model.weather![0].description}",
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                    const SizedBox(height: 30),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Image.asset(
+                                                    "assets/image/windy.png"),
+                                                const SizedBox(width: 24),
+                                                const Text("Wind"),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Image.asset(
+                                                    "assets/image/hum.png"),
+                                                const SizedBox(width: 24),
+                                                const Text("Hum"),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(width: 10),
+                                        const Column(
+                                          children: [
+                                            Text("|"),
+                                            SizedBox(height: 20),
+                                            Text("|"),
+                                          ],
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text(
+                                                    "${model.windModel!.speed}"),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 20),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                    "${model.mainModel!.humidity}%"),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(context, 'detail',
+                                    arguments: model);
+                              },
+                              child: Center(
+                                child: Container(
+                                  height: 50,
+                                  alignment: Alignment.center,
+                                  width:
+                                      MediaQuery.sizeOf(context).width * 0.46,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: const Text(
+                                    "Forecast report >",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      }
+                      return const Center(child: CircularProgressIndicator());
+                    },
                   ),
                 ),
               ),

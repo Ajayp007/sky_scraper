@@ -40,9 +40,13 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.network(
-                "https://cdn-icons-png.freepik.com/512/1779/1779940.png",
-                fit: BoxFit.cover,
+              Center(
+                child: Image.network(
+                  "https://cdn-icons-png.freepik.com/512/1779/1779940.png",
+                  fit: BoxFit.cover,
+                  height: 300,
+                  width: 300,
+                ),
               ),
               const SizedBox(height: 20),
               Padding(

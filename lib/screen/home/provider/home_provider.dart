@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +8,7 @@ import '../../../utils/shared_helper.dart';
 import '../model/home_model.dart';
 
 class HomeProvider with ChangeNotifier {
- HomeModel? model;
+  Future<HomeModel?>? model;
 
   Connectivity connectivity = Connectivity();
   bool? isInternet;
@@ -22,12 +24,10 @@ class HomeProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteBookmark(int index)
-  {
+  void deleteBookmark(int index) {
     bookmark!.removeAt(index);
     notifyListeners();
   }
-
 
   Future<void> getBookmark() async {
     List<String>? bookmarkData = await getBookmarkData();
@@ -40,9 +40,15 @@ class HomeProvider with ChangeNotifier {
     }
   }
 
-  Future<void> getWeatherData() async {
-    model = await helper.getWeatherAPI(city: searchCity);
-    notifyListeners();
+  void getWeatherData() {
+    model = helper.getWeatherAPI(city: searchCity);
+    model!.then(
+      (value) {
+        if (value != null) {
+          notifyListeners();
+        }
+      },
+    );
   }
 
   void checkConnection() async {
