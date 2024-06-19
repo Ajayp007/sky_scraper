@@ -17,9 +17,9 @@ Cute Winter and Cold Weather Captions:
 
 ## ⚙️ Features
 Main features are as follows:
-See All World Wether Details
-Save City And Country
-Change ThemeMode
+See All World Wether Details.
+Save City And Country.
+Change ThemeMode.
 ## 📲 Screenshots
 
 <img src ="https://github.com/Ajayp007/sky_scraper/assets/156168895/c726ea63-a7d5-41e1-8139-fbcb78536d31" height="600" width="300">
