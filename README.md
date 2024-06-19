@@ -26,7 +26,6 @@ Change ThemeMode
 <img src ="https://github.com/Ajayp007/sky_scraper/assets/156168895/8fec03b5-ca0f-48bc-ac77-852e7d372260" height="600" width="300">
 <img src ="https://github.com/Ajayp007/sky_scraper/assets/156168895/1482ede4-7972-4ad9-90d2-69482d4bc0c2" height="600" width="300">
 <img src ="https://github.com/Ajayp007/sky_scraper/assets/156168895/2b078c69-452f-405d-ad47-a555df9e3b05" height="600" width="300">
-<img src ="" height="600" width="300">
 
 
 <br><br>
@@ -35,6 +34,7 @@ Change ThemeMode
 <div align="center">
 
 
+https://github.com/Ajayp007/sky_scraper/assets/156168895/20468e1f-fb3a-44dd-9604-a7eaf51e8521
 
   
 ### Made with ❤️ in India.
