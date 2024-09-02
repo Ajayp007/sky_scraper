@@ -59,7 +59,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: providerWH!.bookmark!.length,
+                    itemCount: providerWH!.bookmark.length,
                     itemBuilder: (context, index) {
                       return Container(
                         height: 80,
@@ -75,7 +75,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "${providerRH!.bookmark![index]}",
+                              providerRH!.bookmark[index],
                               style: const TextStyle(fontSize: 18),
                             ),
                             const Text(

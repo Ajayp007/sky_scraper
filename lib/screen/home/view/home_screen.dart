@@ -46,11 +46,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         "https://m.media-amazon.com/images/I/51Gsas-IgVL.jpg",
                         fit: BoxFit.cover,
                         height: MediaQuery.sizeOf(context).height,
+                        width: MediaQuery.sizeOf(context).width,
                       )
                     : Image.network(
                         "https://media.istockphoto.com/id/1155985333/photo/blue-sky-and-white-clouds-in-summer.webp?b=1&s=612x612&w=0&k=20&c=KUNu-lWzna3EhSz51TNIf1KlhLf3Vr0SlmYe__J6csU=",
                         fit: BoxFit.cover,
                         height: MediaQuery.sizeOf(context).height,
+                        width: MediaQuery.sizeOf(context).width,
                       ),
                 SingleChildScrollView(
                   child: Padding(
@@ -93,7 +95,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               const SizedBox(
                                 height: 20,
                               ),
-
                               Row(
                                 children: [
                                   IconButton(
