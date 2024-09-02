@@ -14,7 +14,7 @@ class HomeProvider with ChangeNotifier {
   bool? isInternet;
   String searchCity = "surat";
 
-  List<String?>? bookmark = [];
+  List<String> bookmark = [];
 
   ApiHelper helper = ApiHelper();
 
@@ -25,17 +25,27 @@ class HomeProvider with ChangeNotifier {
   }
 
   void deleteBookmark(int index) {
-    bookmark!.removeAt(index);
+    bookmark.removeAt(index);
+    Bookmark.bookmark.setBookmarkData(bookmark);
     notifyListeners();
   }
 
-  Future<void> getBookmark() async {
-    List<String>? bookmarkData = await getBookmarkData();
+  Future<void> setBookmark(String bookCity) async {
+    List<String>? bookmarkData = await Bookmark.bookmark.getBookmarkData();
     if (bookmarkData != null) {
-      bookmarkData.addAll(
-        [searchCity],
-      );
-      setBookmarkData(bookmarkData);
+      bookmarkData.add(bookCity);
+      Bookmark.bookmark.setBookmarkData(bookmarkData);
+    } else {
+      Bookmark.bookmark.setBookmarkData([bookCity]);
+    }
+    getBook();
+    notifyListeners();
+  }
+
+  Future<void> getBook() async {
+    var list = await Bookmark.bookmark.getBookmarkData();
+    if (list != null) {
+      bookmark = list;
       notifyListeners();
     }
   }

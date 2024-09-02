@@ -7,7 +7,7 @@ import '../../screen/home/model/home_model.dart';
 class ApiHelper {
   Future<HomeModel?> getWeatherAPI({required String city}) async {
     String link =
-        "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=f328d45c82255838461c68c2ab810685";
+        "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=f328d45c82255838461c68c2ab810685&units=metric";
     var response = await http.get(Uri.parse(link));
 
     if (response.statusCode == 200) {

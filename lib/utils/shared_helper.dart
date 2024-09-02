@@ -1,5 +1,10 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+class Bookmark
+{
+
+ static Bookmark bookmark = Bookmark._();
+  Bookmark._();
 
   void setThemeData(bool themeData) async {
     SharedPreferences shr = await SharedPreferences.getInstance();
@@ -8,7 +13,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
   Future<bool?> getThemeData() async {
     bool? data;
-
     SharedPreferences shr = await SharedPreferences.getInstance();
     data = shr.getBool('true')!;
     return data;
@@ -21,9 +25,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
   Future<List<String>?> getBookmarkData() async {
     List<String>? book = [];
-
     SharedPreferences shr = await SharedPreferences.getInstance();
-    book = shr.getStringList('book')!;
+    book = shr.getStringList('book');
     return book;
   }
+}
 

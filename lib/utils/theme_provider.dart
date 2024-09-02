@@ -5,7 +5,7 @@ class ThemeProvider with ChangeNotifier {
   bool? themeMode = true;
 
   void setTheme() async {
-    themeMode = await getThemeData();
+    themeMode = await Bookmark.bookmark.getThemeData();
     notifyListeners();
   }
 }

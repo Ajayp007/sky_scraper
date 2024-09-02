@@ -18,6 +18,12 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
   ThemeProvider? providerW;
 
   @override
+  void initState() {
+    super.initState();
+    context.read<HomeProvider>().getBook();
+  }
+
+  @override
   Widget build(BuildContext context) {
     providerWH = context.watch<HomeProvider>();
     providerRH = context.read<HomeProvider>();
@@ -57,6 +63,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                     itemBuilder: (context, index) {
                       return Container(
                         height: 80,
+                        margin: const EdgeInsets.all(8),
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         width: MediaQuery.sizeOf(context).width * 0.96,
                         decoration: BoxDecoration(

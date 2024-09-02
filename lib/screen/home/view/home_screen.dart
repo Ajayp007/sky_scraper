@@ -93,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               const SizedBox(
                                 height: 20,
                               ),
+
                               Row(
                                 children: [
                                   IconButton(
@@ -109,7 +110,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   const Spacer(),
                                   IconButton(
                                     onPressed: () {
-                                      providerRH!.bookmark!.add(txtSearch.text);
+                                      providerRH!.setBookmark(model.name!);
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                              "Added Bookmark Successfully"),
+                                        ),
+                                      );
                                     },
                                     icon: const Icon(Icons.bookmark_outline),
                                   ),
@@ -268,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       trailing: Switch(
                         value: providerW!.themeMode!,
                         onChanged: (value) {
-                          setThemeData(value);
+                          Bookmark.bookmark.setThemeData(value);
                           providerR!.setTheme();
                         },
                       ),
