@@ -25,7 +25,7 @@ class _DetailScreenState extends State<DetailScreen> {
         children: [
           providerW!.themeMode! == false
               ? Image.network(
-                  "https://m.media-amazon.com/images/I/51Gsas-IgVL.jpg",
+                  "https://i.pinimg.com/736x/70/81/29/7081293704e5282caec520734f262432.jpg",
                   fit: BoxFit.cover,
                   height: MediaQuery.sizeOf(context).height,
                 )
@@ -36,7 +36,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.only(top: 60,left: 12,right: 12),
+              padding: const EdgeInsets.only(top: 60, left: 12, right: 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -56,8 +56,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       ),
                       Text(
                         "${model.name}",
-                        style:
-                            const TextStyle( fontSize: 22),
+                        style: const TextStyle(fontSize: 22),
                       ),
                     ],
                   ),
@@ -86,9 +85,12 @@ class _DetailScreenState extends State<DetailScreen> {
                             margin: const EdgeInsets.only(right: 12),
                             height: 140,
                             decoration: BoxDecoration(
-                                color: Colors.blue.shade200,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: Colors.white70)),
+                              color: Colors.deepPurple.shade200,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: Colors.white70,
+                              ),
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -118,7 +120,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             height: 140,
                             margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
-                                color: Colors.blue.shade200,
+                                color: Colors.deepPurple.shade200,
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(color: Colors.white70)),
                             child: Row(
@@ -149,7 +151,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             height: 140,
                             margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
-                                color: Colors.blue.shade200,
+                                color: Colors.deepPurple.shade200,
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(color: Colors.white70)),
                             child: Row(
@@ -180,7 +182,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             height: 140,
                             margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
-                                color: Colors.blue.shade200,
+                                color: Colors.deepPurple.shade200,
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(color: Colors.white70)),
                             child: Row(
@@ -211,7 +213,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             height: 140,
                             margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
-                                color: Colors.blue.shade200,
+                                color: Colors.deepPurple.shade200,
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(color: Colors.white70)),
                             child: Row(
@@ -242,7 +244,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             height: 140,
                             margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
-                                color: Colors.blue.shade200,
+                                color: Colors.deepPurple.shade200,
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(color: Colors.white70)),
                             child: Row(
@@ -273,7 +275,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             height: 140,
                             margin: const EdgeInsets.only(right: 12),
                             decoration: BoxDecoration(
-                                color: Colors.blue.shade200,
+                                color: Colors.deepPurple.shade200,
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(color: Colors.white70)),
                             child: Row(

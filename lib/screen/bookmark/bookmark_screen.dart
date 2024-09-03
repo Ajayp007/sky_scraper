@@ -34,7 +34,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
         children: [
           providerW!.themeMode! == false
               ? Image.network(
-                  "https://m.media-amazon.com/images/I/51Gsas-IgVL.jpg",
+                  "https://i.pinimg.com/736x/70/81/29/7081293704e5282caec520734f262432.jpg",
                   fit: BoxFit.cover,
                   height: MediaQuery.sizeOf(context).height,
                 )

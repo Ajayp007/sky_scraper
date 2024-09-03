@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 providerW!.themeMode! == false
                     ? Image.network(
-                        "https://m.media-amazon.com/images/I/51Gsas-IgVL.jpg",
+                        "https://i.pinimg.com/736x/70/81/29/7081293704e5282caec520734f262432.jpg",
                         fit: BoxFit.cover,
                         height: MediaQuery.sizeOf(context).height,
                         width: MediaQuery.sizeOf(context).width,
@@ -80,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     width:
                                         MediaQuery.sizeOf(context).width * 0.82,
                                     child: SearchBar(
+
                                       controller: txtSearch,
                                       leading: IconButton(
                                         onPressed: () {
@@ -133,7 +134,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   width: MediaQuery.sizeOf(context).width * 0.8,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(12),
-                                    color: Colors.blue.shade200,
+                                    color: providerW!.themeMode! == false
+                                        ? Colors.deepPurple.shade200
+                                        : Colors.blue.shade200,
                                     border: Border.all(
                                         width: 1, color: Colors.white),
                                   ),
